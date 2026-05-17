@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+.container{
+text-align:center;
+margin-top:80px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 30px;
+margin:10px;
+background:#007bff;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-size:16px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#0056b3;
+}
+
+.register-btn{
+background:#28a745;
+}
+
+.register-btn:hover{
+background:#1e7e34;
+}
+
+</style>
+
+<div class="container">
+
+<h2>Welcome to Typing Skill Analyzer ⌨️</h2>
+
+{% if user.is_authenticated %}
+
+<p>Hello <b>{{ user.username }}</b></p>
+
+<a href="{% url 'typing' %}" class="btn">Start Typing Test</a>
+
+<a href="{% url 'dashboard' %}" class="btn">Dashboard</a>
+
+<a href="{% url 'logout' %}" class="btn">Logout</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn">Login</a>
+
+<a href="{% url 'register' %}" class="btn register-btn">Register</a>
+
+{% endif %}
+
+</div>
+
+{% endblock %}
